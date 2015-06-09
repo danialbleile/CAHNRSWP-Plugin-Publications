@@ -1,0 +1,82 @@
+#cwpp-publication {
+	padding: 1rem 0 2rem;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 1rem;
+}
+
+
+#cwpp-publication > h4 {
+	background: #fff;
+	font-size: 1rem;
+	margin: 0;
+	padding: 0.75rem 0 0.75rem 1rem;
+	font-weight: bold;
+	border: 1px solid #ddd;
+	border-radius: 2px 2px 0 0;
+}
+
+#cwpp-publication fieldset.cwpp-group {
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	background: #fff;
+	padding: 1.5rem 0;
+}
+
+#cwpp-publication fieldset .cwpp-fieldset-inner {
+	margin: 0 2rem;
+}
+
+#cwpp-publication label {
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: #555;
+}
+
+#cwpp-publication input[type=text] {
+	height: 35px;
+	line-height: 35px;
+	font-size: 1rem;
+	color: #555;
+	text-indent: 0.5rem;
+	border-radius: 4px;
+}
+
+#cwpp-publication textarea {
+	height: 6rem;
+}
+
+#cwpp-publication .cwpp-input-full {
+	width: 100%;
+}
+
+#cwpp-publication .cwpp-input-50 {
+	width: 48%;
+	margin-right: 2%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Buttons ---------------------------------------- */
+.cwpp-link-button {
+	display: inline-block;
+	margin-left: 8px;
+	vertical-align: top;
+	padding: 0 1rem;
+	border-radius: 3px;
+}
+
+.cwpp-link-button:hover {
+	color: #fff;
+}
+
+.cwpp-standard-button { 
+	height: 35px;
+	line-height: 35px;
+	background: #2ea2cc;
+ 	border-color: #0074a2;
+ 	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+ 	box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+ 	color: #fff;
+ 	text-decoration: none;
+}
+

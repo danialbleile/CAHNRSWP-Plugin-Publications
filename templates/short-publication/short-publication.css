@@ -1,0 +1,49 @@
+/* CSS Document */ 
+#cover-page {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+section#cover-page  {
+	display: block;
+	height: 900px;
+	position: relative;
+}
+
+#cover-page footer#cover-footer {
+	border-bottom: 1px solid #777;
+	position: absolute;
+	bottom: 10px;
+	left: 25px;
+	right: 25px;
+	width: auto;
+}
+
+#cover-page .primary-logo {
+	width: 300px;
+	height: auto;
+	/*border-left: 1px solid #777777;
+	border-right: 1px solid #777777;*/
+}
+
+#cover-page .primary-header {
+	color: #ffffff;
+	background: #53391e;
+	padding: 50px 0;
+}
+
+#cover-page .primary-title {
+	font-size: 30px;
+	line-height: 40px;
+	text-transform: uppercase;
+	margin: 0 25px;
+	font-weight: bold;
+}
+
+#cover-page .primary-subtitle {
+	font-size: 18px;
+	line-height: 24px;
+	margin: 0 25px;
+	font-weight: bold;
+}
+
+

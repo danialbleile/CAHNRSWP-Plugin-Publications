@@ -1,0 +1,73 @@
+@page {
+	margin-top: 45px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 30px;
+}
+
+body {
+	color: #444;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.pub-section-inner {
+	margin-left: 40px;
+	margin-right: 40px;
+	position: relative;
+}
+
+#cover-page {
+	page-break-after:always;
+}
+
+#cover-page .pub-section-inner {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+#cover-page > footer {
+	position: relative;
+}
+
+#cover-page > footer .pub-peer-reviewed {
+	position: absolute;
+	right:25px;
+	width: 150px;
+	bottom: 35px;
+	height: 100px;
+}
+
+#cover-page > footer .pub-number {
+	background: #68737a;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+	text-align: center;
+	padding: 3px 0;
+}
+
+section#indicia-page  {
+	page-break-before:always;
+	display: block;
+	height: 900px;
+	position: relative;
+}
+
+section#indicia-page .pub-content-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+section#indicia-page .primary-logo {
+	width: 250px;
+}
+
+
+
