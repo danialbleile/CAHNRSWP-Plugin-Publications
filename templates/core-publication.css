@@ -8,11 +8,14 @@
 body {
 	color: #444;
 	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	word-wrap: break-word;
 }
 
 img {
 	max-width: 100%;
-	height: auto;
+	height: auto !important;
 }
 
 .pub-section-inner {
@@ -51,22 +54,39 @@ img {
 	padding: 3px 0;
 }
 
-section#indicia-page  {
+section {
+	display: block;
+	page-break-before: always;
+}
+
+section:first-child {
+	page-break-before: auto;
+}
+
+#indicia-page  {
 	page-break-before:always;
 	display: block;
 	height: 900px;
 	position: relative;
 }
 
-section#indicia-page .pub-content-bottom {
+#indicia-page .pub-content-bottom {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	width: 100%;
 }
 
-section#indicia-page .primary-logo {
+#indicia-page .primary-logo {
 	width: 250px;
+}
+
+/*
+* Pagebuilder
+* -----------------------------
+*/
+.column {
+	/*border: 1px solid #000;*/
 }
 
 

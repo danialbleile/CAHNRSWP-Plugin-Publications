@@ -3,7 +3,7 @@
 * Plugin Name: CAHNRSWP Publications
 * Plugin URI:  http://cahnrs.wsu.edu/communications/
 * Description: Adds Publication Content Type
-* Version:     0.1.1
+* Version:     0.2.0
 * Author:      CAHNRS Communications, Danial Bleile
 * Author URI:  http://cahnrs.wsu.edu/communications/
 * License:     Copyright Washington State University
@@ -43,17 +43,23 @@ class CAHNRSWP_Plugin_Publications {
 		
 		require_once 'model/model-publication-post-cwpp.php';
 		
-		require_once 'control/control-publication-cwpp.php';
+		$publication = new Model_Publication_CWPP();
 		
-		require_once 'view/view-publication-cwpp.php';
+		$publication->build( $post );
 		
-		$Publication = new Model_Publication_Post_CWPP();
+		//require_once 'control/control-publication-cwpp.php';
 		
-		$publication_View = new View_Publication_CWPP( $Publication );
+		require_once 'view/view-publication-editor-cwpp.php';
 		
-		$publication_control = new Control_Publication_CWPP( $Publication , $publication_View );
+		//$Publication = new Model_Publication_Post_CWPP();
 		
-		$publication_control->the_editor( $post );
+		$publication_View = new View_Publication_Editor_CWPP( $publication );
+		
+		$publication_View->the_editor();
+		
+		//$publication_control = new Control_Publication_CWPP( $Publication , $publication_View );
+		
+		//$publication_control->the_editor( $post );
 		
 	}
 	
@@ -61,23 +67,29 @@ class CAHNRSWP_Plugin_Publications {
 		
 		require_once 'model/model-publication-save-cwpp.php';
 		
-		require_once 'control/control-publication-cwpp.php';
+		//require_once 'control/control-publication-cwpp.php';
 		
-		$Publication = new Model_Publication_Save_CWPP();
+		$publication = new Model_Publication_Save_CWPP();
 		
-		$publication_control = new Control_Publication_CWPP( $Publication );
+		$publication->build( $post_id );
+		
+		//var_dump( $publication );
+		
+		//$publication_control = new Control_Publication_CWPP( $Publication );
 		
 		remove_action( 'save_post_publication' , array( $this , 'cwp_save_post' ) );
 		
-		$publication_control->save( $post_id );
+		$publication->save( $post_id );
 		
 	}
 	
 	public function cwp_template_include( $template ){
 		
-		if ( isset ( $_GET[ 'publication_template' ] ) ){
+		if ( isset ( $_GET[ 'pub-pdf' ] ) ){
 			
-			$type = sanitize_text_field( $_GET[ 'publication_template' ] );
+			$template = CWPPDIR . 'templates/pdf.php';
+			
+			/*$type = sanitize_text_field( $_GET[ 'publication_template' ] );
 			
 			switch( $type ){
 				
@@ -85,7 +97,7 @@ class CAHNRSWP_Plugin_Publications {
 					$template = CWPPDIR . 'templates/short-publication.php';
 					break;
 				
-			} // end switch
+			} // end switch */
 			
 		} // end if
 		

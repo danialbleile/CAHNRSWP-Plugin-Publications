@@ -27,6 +27,29 @@ class View_Publication_Short_CWPP {
 	public function set_footer( $footer ){ $this->footer = $footer; }
 	
 	// Actions
+	public function the_publication(){
+		
+		// Set Output
+		
+		$this->set_header( $this->service_build_header() );
+		
+		$this->set_footer( $this->service_build_footer() );
+		
+		$this->set_cover_page( $this->service_build_cover_page() );
+		
+		// Get HTML
+		
+		$html = $this->get_header();
+		
+		$html .= $this->get_cover_page();
+		
+		$html .= $this->get_footer();
+			
+		return $html;
+		
+	}
+	
+	
 	public function output( $echo = true ){
 		
 		// Set Output

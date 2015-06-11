@@ -12,9 +12,33 @@ class View_Publication_CWPP {
 	
 	public function the_editor(){
 		
-		$disabled = ( $this->publication->check_is_top_page() )? '' : 'disabled'; 
+		$html = '<div id="cwpp-publication">';
 		
-		include CWPPDIR . 'inc/publication-after-title-parent.php';
+			$pub_number = ( $this->publication->get_number() ) ? $this->publication->get_number() : 'Enter Publication Number';
+		
+			$html .= '<input class="cwpp-full-input cwpp-large-input" type="text" name="_cwpp_number" value="' . $pub_number  .'" />';
+		
+		$html .= '</div>';
+		
+		echo $html;
+		
+	}
+	
+	public function the_tabs(){
+		
+		$html = '<nav id="cwpp-publication-info">';
+		
+		$tabs = array( 'Basic Info','Authors','Table of Contents');
+		
+		foreach( $tabs as $tab ){
+			
+			$html .= '<a href="#">' . $tab . '</a>';
+			
+		}
+		
+		$html .= '</nav>';
+		
+		return $html;
 		
 	}
 }

@@ -83,19 +83,19 @@ class Publication_Short_PDF_CWPP {
 		
 		$html .= '<div class="pub-section-inner">'; 
 		
-		foreach( $this->pub->pub_chapters as $index => $chapter ){
+		foreach( $this->pub->get_chapters() as $index => $chapter ){
 			
 			if ( $index > 0 ){
 				
-				$html .= '<h2>' . $chapter['title'] . '</h2>';
+				$html .= '<h2>' . apply_filters( 'the_title' , $chapter->post_title ) . '</h2>';
 				
 			}  else {
 				
-				$html .= '<h1>' . $chapter['title'] . '</h1>';
+				$html .= '<h1>' . apply_filters( 'the_title' , $chapter->post_title ) . '</h1>';
 				
 			}// end if
 			
-			$html .= apply_filters( 'the_content' , $chapter['content'] );
+			$html .= do_shortcode( $chapter->post_content );
 			
 		} // end foreach
 		
@@ -111,7 +111,7 @@ class Publication_Short_PDF_CWPP {
 		
 		$html = '<script type="text/php">
 			if ( isset($pdf) ) {
-				$text = "WSU EXTENSION  |  ' . strtoupper( $this->pub->pub_title ) . '"; 
+				$text = "WSU EXTENSION  |  ' . strtoupper( $this->pub->get_title() ) . '"; 
 				$font = Font_Metrics::get_font("helvetica", "bold");
 				$size = 8;
 	
@@ -142,7 +142,7 @@ class Publication_Short_PDF_CWPP {
 			$h = $pdf->get_height() - 25;
 
           $font = Font_Metrics::get_font("helvetica", "bold");
-          $pdf->page_text(30, $h, "' .strtoupper( $this->pub->pub_number ) . '  |  Page {PAGE_NUM}  |  ext.wsu.edu", $font, 7, array(0.7,0.7,0.7) );
+          $pdf->page_text(30, $h, "' .strtoupper( $this->pub->get_number() ) . '  |  Page {PAGE_NUM}  |  ext.wsu.edu", $font, 7, array(0.7,0.7,0.7) );
 
         }
         </script>';
