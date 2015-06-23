@@ -62,7 +62,7 @@ class Model_Publication_CWPP {
 		$this->set_parent_id( $parent->ID );
 		$this->set_title( apply_filters( 'the_title' , $parent->post_title ) );
 		$this->set_abstract( $parent->post_excerpt );
-		$this->set_pdf_link( get_permalink( $parent->ID ) );
+		$this->set_pdf_link( get_permalink( $parent->ID ) . '?pub-pdf=true' );
 		$this->set_img_src( $this->service_get_img_src() );
 		
 		// Get meta from parent

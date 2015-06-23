@@ -3,7 +3,7 @@
 * Plugin Name: CAHNRSWP Publications
 * Plugin URI:  http://cahnrs.wsu.edu/communications/
 * Description: Adds Publication Content Type
-* Version:     0.2.0
+* Version:     0.2.1
 * Author:      CAHNRS Communications, Danial Bleile
 * Author URI:  http://cahnrs.wsu.edu/communications/
 * License:     Copyright Washington State University
@@ -33,6 +33,8 @@ class CAHNRSWP_Plugin_Publications {
 		
 		add_action( 'admin_enqueue_scripts', array( $this , 'cwp_admin_scripts' ) );
 		
+		add_action( 'wp_enqueue_scripts', array( $this , 'cwp_scripts' ) );
+		
 		// Filters
 		
 		add_filter( 'template_include', array( $this , 'cwp_template_include' ), 99 );
@@ -41,21 +43,25 @@ class CAHNRSWP_Plugin_Publications {
 	
 	public function cwp_edit_form_after_title( $post ){
 		
-		require_once 'model/model-publication-post-cwpp.php';
+		if ( $post->post_type == 'publication' ){
 		
-		$publication = new Model_Publication_CWPP();
+			require_once 'model/model-publication-post-cwpp.php';
+			
+			$publication = new Model_Publication_CWPP();
+			
+			$publication->build( $post );
+			
+			//require_once 'control/control-publication-cwpp.php';
+			
+			require_once 'view/view-publication-editor-cwpp.php';
+			
+			//$Publication = new Model_Publication_Post_CWPP();
+			
+			$publication_View = new View_Publication_Editor_CWPP( $publication );
+			
+			$publication_View->the_editor();
 		
-		$publication->build( $post );
-		
-		//require_once 'control/control-publication-cwpp.php';
-		
-		require_once 'view/view-publication-editor-cwpp.php';
-		
-		//$Publication = new Model_Publication_Post_CWPP();
-		
-		$publication_View = new View_Publication_Editor_CWPP( $publication );
-		
-		$publication_View->the_editor();
+		}// end if
 		
 		//$publication_control = new Control_Publication_CWPP( $Publication , $publication_View );
 		
@@ -89,17 +95,11 @@ class CAHNRSWP_Plugin_Publications {
 			
 			$template = CWPPDIR . 'templates/pdf.php';
 			
-			/*$type = sanitize_text_field( $_GET[ 'publication_template' ] );
+		} else if ( isset ( $_GET[ 'publication' ] ) ){
 			
-			switch( $type ){
-				
-				case 'short-publication':
-					$template = CWPPDIR . 'templates/short-publication.php';
-					break;
-				
-			} // end switch */
+			$template = CWPPDIR . 'templates/syndicate.php';
 			
-		} // end if
+		}// end if
 		
 		return $template;
 		
@@ -118,6 +118,16 @@ class CAHNRSWP_Plugin_Publications {
 		wp_enqueue_style( 'publications-admin-cs', CWPPURL . 'css/admin.css', array(), '0.0.1' );
 		
 	}
+	
+	public function cwp_scripts(){
+		
+		wp_enqueue_script( 'publications-public-js', CWPPURL . 'js/public.js', array(), '0.0.1', 99 );
+		wp_enqueue_script( 'cycle2', CWPPURL . 'js/cycle2.js', array(), '0.0.1', 99 );
+		
+		wp_enqueue_style( 'publications-public-cs', CWPPURL . 'css/public.css', array(), '0.0.1' );
+		
+	}
+	
 	
 	private function regisert_post(){
 		

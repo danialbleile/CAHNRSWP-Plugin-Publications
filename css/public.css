@@ -1,0 +1,140 @@
+/* CSS Document */
+h1.publication {
+	color: #00a6be;
+	margin-bottom: 1rem;
+}
+
+#publication {
+	margin-left: 2rem;
+}
+
+#cwpp-publication-slider {
+	overflow: hidden;
+}
+
+#cwpp-publication-slider .cycle-slide {
+	width: 100%;
+}
+
+footer#pub-footer {
+	text-align: center;
+	position: relative;
+	z-index: 900;
+	margin-bottom: 2rem;
+}
+
+#pub-prev, #pub-pager, #pub-next {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#pub-prev, #pub-next {
+	background-color: #981e32;
+	color: #fff;
+	border-radius: 3px;
+	padding: 0.5rem 0;
+	margin: 0 0.25rem;
+	min-width: 115px;
+	cursor: pointer;
+	font-size: 0.8rem;
+}
+
+#pub-prev:hover, #pub-next:hover {
+	background-color: #791526;
+}
+
+#pub-pager {
+	margin: 0 8px;
+}
+
+#pub-pager span {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	background-color: #cb9b6e;
+	background-color: #8d959a;
+	font-size: 0;
+	border-radius: 5px;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+#pub-pager span.cycle-pager-active {
+	background-color: #cb9b6e;
+}
+/*
+ * Banner
+ * --------------------
+*/
+#publication-banner {
+	height: 400px;
+	margin-bottom: 1.5rem;
+}
+
+#publication-banner > div {
+	height: 400px;
+	position: absolute;
+	background: #000;
+	left: 0;
+	right: 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+/*
+ * Details
+ * --------------------
+*/
+
+#publication-details {
+	margin-right: 160px;
+	min-height: 125px;
+	padding-bottom: 1.5rem;
+}
+
+#publication-details nav a {
+	display: inline-block;
+	background: #e4dfcc;
+	margin-right: 1px;
+	padding: 0.1rem 1rem;
+	color: #629b94;
+}
+
+#publication-details nav a.active {
+	background: #f3e4c3;
+	color: #597f80;
+}
+
+#publication-details div.section {
+	background: #f3e4c3;
+	padding: 1.5rem 0;
+}
+
+#publication-details div.section > div {
+	margin: 0 1rem;
+	font-size: 0.8rem;
+	color: #333;
+	line-height: 1rem;
+}
+/*
+ * Logo
+ * --------------------
+*/
+#publication-logo {
+	width: 140px;
+	float: right;
+}
+#publication-logo img {
+	max-width: 100%;
+	display: block;
+}
+/*
+ * Indicia
+ * --------------------
+*/
+#indicia {
+	font-size: 0.8rem;
+	line-height: 1rem;
+	color: #777;
+}
