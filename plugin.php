@@ -3,7 +3,7 @@
 * Plugin Name: CAHNRSWP Publications
 * Plugin URI:  http://cahnrs.wsu.edu/communications/
 * Description: Adds Publication Content Type
-* Version:     0.2.1
+* Version:     0.3.0
 * Author:      CAHNRS Communications, Danial Bleile
 * Author URI:  http://cahnrs.wsu.edu/communications/
 * License:     Copyright Washington State University
@@ -29,7 +29,7 @@ class CAHNRSWP_Plugin_Publications {
 		
 		add_action( 'save_post_publication' , array( $this , 'cwp_save_post' ) );
 		
-		add_action( 'init' , array( $this , 'cwp_init' ) );
+		add_action( 'init' , array( $this , 'cwp_init' ), 99 );
 		
 		add_action( 'admin_enqueue_scripts', array( $this , 'cwp_admin_scripts' ) );
 		
@@ -44,6 +44,10 @@ class CAHNRSWP_Plugin_Publications {
 	public function cwp_edit_form_after_title( $post ){
 		
 		if ( $post->post_type == 'publication' ){
+			
+			require_once 'classes/class-forms-cwpp.php';
+			
+			$form_builder = new Forms_CWPP();
 		
 			require_once 'model/model-publication-post-cwpp.php';
 			
@@ -57,7 +61,7 @@ class CAHNRSWP_Plugin_Publications {
 			
 			//$Publication = new Model_Publication_Post_CWPP();
 			
-			$publication_View = new View_Publication_Editor_CWPP( $publication );
+			$publication_View = new View_Publication_Editor_CWPP( $publication , $form_builder );
 			
 			$publication_View->the_editor();
 		
@@ -132,11 +136,12 @@ class CAHNRSWP_Plugin_Publications {
 	private function regisert_post(){
 		
 		$args = array(
-		  'public' => true,
-		  'label'  => 'Publications',
-		  'hierarchical'       => true,
-		  'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
-		  'rewrite'            => array( 'slug' => 'pubs' ),
+		  'public'       => true,
+		  'label'        => 'Publications',
+		  'hierarchical' => true,
+		  'supports'     => array( 'title', 'editor', 'author', 'thumbnail' ),
+		  'rewrite'      => array( 'slug' => 'pubs' ),
+		  'taxonomies'   => array( 'post_tag','topic' ),
 		);
 		
 		register_post_type( 'publication', $args );

@@ -2,6 +2,22 @@
 
 class Model_Publication_CWPP {
 	
+	protected $fields = array(
+		'reviewed_month'   => array( 'value' => '' , 'type' => 'num' ),
+		'reviewed_year'    => array( 'value' => '' , 'type' => 'num' ),
+		'published_month'  => array( 'value' => '' , 'type' => 'num' ),
+		'published_year'   => array( 'value' => '' , 'type' => 'num' ),
+		'copyright'        => array( 'value' => '' , 'type' => 'num' ),
+		'template'         => array( 'value' => '' , 'type' => 'text' ),
+		'uses_pesticide'   => array( 'value' => 0 , 'type' => 'bool' ),
+		'is_peer_reviewed' => array( 'value' => 1 , 'type' => 'bool' ),
+	);
+	
+	protected $topics = array();
+	
+	
+	
+	
 	protected $post_key = '_cwpp';
 	protected $parent_post = false;
 	protected $parent_id = false;
@@ -16,8 +32,28 @@ class Model_Publication_CWPP {
 	protected $pdf_link = '';
 	protected $content = '';
 	protected $template = 'short-publication';
+	protected $published_month = '';
+	protected $published_year = '';
+	protected $copyright = '';
+	protected $uses_pesticide = '';
+	protected $dates = array(
+		'','January','Febuary','March','April','May','June','July','August','September','October','November','December',
+	);
 	
 	// Gets
+	public function get_field( $name ){
+		
+		if ( array_key_exists( $name , $this->fields ) ){
+			
+			return $this->fields[ $name ]['value'];
+			
+		} else {
+			
+			return '';
+		}
+		
+	}
+	public function get_fields() { return $this->fields; }
 	public function get_post_key(){ return $this->post_key; }
 	public function get_parent_post(){ return $this->parent_post; }
 	public function get_parent_id(){ return $this->parent_id; }
@@ -32,8 +68,24 @@ class Model_Publication_CWPP {
 	public function get_pdf_link(){ return $this->pdf_link; }
 	public function get_template(){ return $this->template; }
 	public function get_img_src(){ return $this->img_src; }
+	public function get_published_month(){ return $this->published_month; }
+	public function get_published_year(){ return $this->published_year; }
+	public function get_copyright(){ return $this->copyright; }
+	public function get_dates() { return $this->dates; }
+	public function get_uses_pesticide() { return $this->uses_pesticide; }
+	//New 
+	public function get_topics(){ return $this->topics; }
 	
 	// Sets
+	public function set_field( $name , $value ){
+		
+		if ( array_key_exists( $name , $this->fields ) ){
+			
+			$this->fields[ $name ]['value'] = $value;
+			
+		}
+		
+	}
 	public function set_parent_post( $post ){ $this->parent_post = $post; }
 	public function set_parent_id( $id ){ $this->parent_id = $id; }
 	public function set_id( $id ){ $this->id = $id; }
@@ -46,6 +98,12 @@ class Model_Publication_CWPP {
 	public function set_is_peer_reviewed( $is_peer_reviewed ){ $this->is_peer_reviewed = $is_peer_reviewed; }
 	public function set_pdf_link( $link ){ $this->pdf_link = $link; }
 	public function set_img_src( $img_src ){ $this->img_src = $img_src; }
+	public function set_published_month( $date ){ $this->published_month = $date; }
+	public function set_published_year( $date ){ $this->published_year = $date; }
+	public function set_copyright( $copyright ){ $this->copyright = $copyright; }
+	public function set_uses_pesticide( $uses_pesticide ){ $this->uses_pesticide = $uses_pesticide; }
+	// New 
+	public function set_topics( $topics ){ $this->topics = $topics; }
 	
 	// Builds
 	public function build( $post ){
@@ -71,7 +129,68 @@ class Model_Publication_CWPP {
 		// Set from meta
 		$this->set_number( $this->service_get_meta( $meta, '_cwpp_number', '' ) );
 		$this->set_subtitle( $this->service_get_meta( $meta, '_cwpp_subtitle', '' ) );
-		$this->set_authors( $this->service_get_meta( $meta, '_cwpp_authors', '' ) );
+		$this->set_authors( get_post_meta( $post->ID, '_cwpp_authors', true ) );
+		$this->set_published_month( get_post_meta( $post->ID, '_cwpp_published_month', true ) );
+		$this->set_published_year( get_post_meta( $post->ID, '_cwpp_published_year', true ) );
+		$this->set_copyright( get_post_meta( $post->ID, '_cwpp_copyright', true ) );
+		$this->set_is_peer_reviewed( get_post_meta( $post->ID, '_cwpp_is_peer_reviewed', true ) );
+		$this->set_uses_pesticide( get_post_meta( $post->ID, '_cwpp_uses_pesticide', true ) );
+		
+		// New -------------------------------------------------------
+		
+		$topics_objs = get_the_terms( $parent->ID, 'topic' );
+		
+		$topics = array();
+		
+		if ( $topics_objs ){
+		
+			foreach( $topics_objs as $topic_obj ){
+				
+				$topics[] = $topic_obj->slug;
+				
+			} // end foreach
+			
+		} // end if
+		
+		$this->set_topics( $topics );
+		
+		
+		$fields = $this->get_fields();
+		
+		//var_dump( $meta );
+		
+		foreach( $fields as $field_name => $field_data ){
+			
+			$field_key = '_cwpp_' . $field_name;
+			
+			if ( array_key_exists( $field_key , $meta ) ){
+				
+				if ( 'array' == $field_data['type'] ){
+				} else {
+					
+					$this->set_field( $field_name , $meta[ $field_key ][0] );
+					
+				} // end if
+				
+			} // end if
+			
+		} // end foreach
+		
+	}
+	
+	public function utility_convert_month( $month ){
+		
+		if ( $month ){
+			
+			$dateObj = DateTime::createFromFormat('!m', $month );
+		
+			return $dateObj->format('F'); // March
+		
+		} else {
+			
+			return '';
+			
+		}
 		
 	}
 	

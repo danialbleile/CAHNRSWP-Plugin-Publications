@@ -48,6 +48,8 @@ class Publication_Short_PDF_CWPP {
 		$html .= ob_get_clean();
 		
 		$html .= '</style>';
+		
+		$html .= '<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,700" rel="stylesheet" type="text/css">';
 			
 		$html .= '</head><body>';
 		
@@ -111,7 +113,7 @@ class Publication_Short_PDF_CWPP {
 		
 		$html = '<script type="text/php">
 			if ( isset($pdf) ) {
-				$text = "WSU EXTENSION  |  ' . strtoupper( $this->pub->get_title() ) . '"; 
+				$text = "WSU EXTENSION  |  ' . str_replace( '&#8217;' , '\'' , strtoupper( $this->pub->get_title() ) ) . '"; 
 				$font = Font_Metrics::get_font("helvetica", "bold");
 				$size = 8;
 	

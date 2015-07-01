@@ -32,11 +32,21 @@
 	z-index: 2;
 }
 
+#cwpp-publication nav a:focus {
+	outline:0; /*removes the dotted border*/
+}
+
 #cwpp-publication fieldset {
 	background: #f5f5f5;
 	border: 1px solid #dedede;
 	position: relative;
 	z-index: 1;
+	display: none;
+	padding: 1rem 0 1.5rem;
+}
+
+#cwpp-publication fieldset.active {
+	display: block;
 }
 
 #cwpp-publication fieldset p {
@@ -47,15 +57,39 @@
 	display: inline-block;
 	vertical-align: top;
 }
+
+#cwpp-publication fieldset hr {
+	margin: 0 1rem;
+}
+
+/*
+ * Author
+ * -------------------------------------------------------
+*/
+#cwpp-publication .cwpp-author {
+	display: block;
+}
+
 /*
  * Inputs
  * -------------------------------------------------------
 */
 
+#cwpp-publication .cwp-input-wrapper {
+	display: inline-block;
+	margin: 0 0.5rem;
+}
+
+#cwpp-publication .cwp-input-wrapper.inline-input {
+	padding: 0.75rem 0.25rem;
+}
+
+
 #cwpp-publication input,
 #cwpp-publication textarea,
 #cwpp-publication select {
 	color: #777;
+	margin: 0 0.25rem;
 }
 
 
@@ -88,6 +122,12 @@
 	text-indent: 0.5rem;
 }
 
+#cwpp-publication .cwpp-inline-input {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 0.5rem;
+}
+
 /*
  * Labels
  * -------------------------------------------------------
@@ -96,6 +136,8 @@
 #cwpp-publication label {
 	font-weight: bold;
 	color: #555;
+	display: inline-block;
+	margin: 0 0.25rem;
 }
 
 /*

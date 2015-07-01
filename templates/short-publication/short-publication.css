@@ -12,7 +12,7 @@
 #cover-page footer#cover-footer {
 	border-bottom: 1px solid #777;
 	position: absolute;
-	bottom: 10px;
+	bottom: 15px;
 	left: 25px;
 	right: 25px;
 	width: auto;
@@ -44,6 +44,40 @@
 	line-height: 24px;
 	margin: 0 25px;
 	font-weight: bold;
+}
+
+#cover-page .pub-authors {
+	font-size: 12px;
+	max-width: 50%;
+	line-height: 14px;
+	padding-bottom: 0rem;
+	padding-left: 10px;
+}
+
+/* Color Themes ---------------------------- */
+#cover-page.gardening .primary-header {
+	background: #7b4519;
+}
+#cover-page.4-h .primary-header {
+	background: #008d3e;
+}
+#cover-page.agricultural-production .primary-header {
+	background: #846223;
+}
+#cover-page.communities-and-economic-development .primary-header {
+	background: #cb7329;
+}
+#cover-page.family-and-home .primary-header {
+	background: #1a878e;
+}
+#cover-page.food-and-nutrition .primary-header {
+	background: #c89100;
+}
+#cover-page.natural-resources .primary-header {
+	background: #988028;
+}
+#cover-page.wsu-employees-and-volunteers .primary-header {
+	background: #b41d30;
 }
 
 
