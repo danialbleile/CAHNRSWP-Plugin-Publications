@@ -14,8 +14,12 @@
 	
 	$publication->build( $post );
 	
-	switch( $publication->get_template() ) {
+	switch( $publication->get_field('template') ) {
 		
+		case 'long-publication':
+			require_once CWPPDIR . 'classes/class-publication-long-pdf-cwpp.php';
+			$publication_view = new Publication_Long_PDF_CWPP( $publication );
+			break;
 		default:
 			require_once CWPPDIR . 'classes/class-publication-short-pdf-cwpp.php';
 			$publication_view = new Publication_Short_PDF_CWPP( $publication );

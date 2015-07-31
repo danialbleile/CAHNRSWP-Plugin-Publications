@@ -173,6 +173,11 @@ section:first-child {
 	width: 250px;
 }
 
+.pdfcl {
+	clear: left;
+	display: inline-block;
+}
+
 /*
 * Pagebuilder
 * -----------------------------

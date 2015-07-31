@@ -42,6 +42,8 @@ class View_Publication_Public_CWPP {
 		
 			$html .= '<img src="' . CWPPURL . '/images/peer-reviewed-logo.png" >';
 			
+			$html .= '<div id="publication-number">' . $this->publication->get_number() . '</div>';
+			
 			$html .= '<a href="' . $this->publication->get_pdf_link() . '">Download</a>';
 		
 		$html .= '</div>';

@@ -3,7 +3,7 @@
 * Plugin Name: CAHNRSWP Publications
 * Plugin URI:  http://cahnrs.wsu.edu/communications/
 * Description: Adds Publication Content Type
-* Version:     0.3.0
+* Version:     0.4.0
 * Author:      CAHNRS Communications, Danial Bleile
 * Author URI:  http://cahnrs.wsu.edu/communications/
 * License:     Copyright Washington State University
@@ -39,7 +39,17 @@ class CAHNRSWP_Plugin_Publications {
 		
 		add_filter( 'template_include', array( $this , 'cwp_template_include' ), 99 );
 		
+		add_filter( 'cwpb_post_types' , array( $this , 'cwpb_post_types' ) );
+		
 	} // end __construct
+	
+	public function cwpb_post_types ( $post_types ){
+		
+		$post_types[] = 'publication';
+		
+		return $post_types;
+		
+	}
 	
 	public function cwp_edit_form_after_title( $post ){
 		
@@ -103,7 +113,12 @@ class CAHNRSWP_Plugin_Publications {
 			
 			$template = CWPPDIR . 'templates/syndicate.php';
 			
+		} else if ( isset ( $_GET[ 'api' ] ) ){
+			
+			$template = CWPPDIR . 'api/index.php';
+			
 		}// end if
+		
 		
 		return $template;
 		
@@ -126,6 +141,7 @@ class CAHNRSWP_Plugin_Publications {
 	public function cwp_scripts(){
 		
 		wp_enqueue_script( 'publications-public-js', CWPPURL . 'js/public.js', array(), '0.0.1', 99 );
+		
 		wp_enqueue_script( 'cycle2', CWPPURL . 'js/cycle2.js', array(), '0.0.1', 99 );
 		
 		wp_enqueue_style( 'publications-public-cs', CWPPURL . 'css/public.css', array(), '0.0.1' );

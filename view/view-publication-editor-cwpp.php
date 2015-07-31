@@ -150,7 +150,7 @@ class View_Publication_Editor_CWPP {
 			
 			$html .= $this->form_builder->select( 
 				'_cwpp_template' ,
-				array( 'short-publication' => 'Short Publication' ),
+				array( 'short-publication' => 'Short Publication','long-publication' => 'Long Publication' ),
 				$this->pub->get_field( 'template' ), 
 				'PDF Template' );
 				
