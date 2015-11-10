@@ -1,0 +1,197 @@
+@page {
+	margin-top: 50px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 25px;
+}
+
+body {
+	color: #333;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	line-height: 18px;
+	word-wrap: break-word;
+}
+
+em {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+img {
+	max-width: 100%;
+	height: auto !important;
+}
+
+h1,h2,h3,h4,h5 {
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 0 0 1rem;
+	margin: 0;
+}
+
+h1 {
+	font-size: 26px;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 0 1rem;
+}
+
+h2 {
+	font-size: 22px;
+	line-height: 23px;
+	font-weight: normal;
+	padding: 0 0 1rem;
+	margin: 0;
+}
+
+h3 {
+	font-size: 20px;
+	line-height: 21px;
+	font-style: italic;
+	padding: 0 0 1rem;
+	margin: 0;
+}
+
+h4 {
+	font-size: 16px;
+	line-height: 17px;
+	font-weight: normal;
+	font-style: italic;
+	padding: 0 0 1rem;
+	margin: 0;
+}
+
+h5 {
+	font-size: 15px;
+	line-height: 16px;
+	font-weight: normal;
+	padding: 0 0 1rem;
+	margin: 0;
+}
+
+figure.wp-caption {
+	display: block;
+}
+
+figure img {
+	width: 100%;
+}
+
+figure.wp-caption,
+figure.cwpb-item {
+	margin-bottom: 1rem;
+}
+
+figcaption {
+	font-size: 12px;
+	font-family: 'Roboto Condensed', sans-serif;
+	line-height: 13px;
+	display: block;
+}
+
+.cwp-table-figure figcaption {
+	padding-bottom: 4px;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 1rem;
+	border: 1px solid #000;
+}
+
+.alignright {
+	float: right;
+	margin-left: 1rem;
+}
+
+p {
+	margin: 0 0 1rem;
+}
+
+
+.pub-section-inner {
+	margin-left: 40px;
+	margin-right: 40px;
+	position: relative;
+}
+
+#cover-page {
+	page-break-after:always;
+}
+
+#cover-page .pub-section-inner {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+#cover-page > footer {
+	/*position: relative;*/
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+#cover-page .pub-peer-reviewed {
+	position: absolute;
+	right:25px;
+	width: 150px;
+	padding-bottom: 30px;
+	bottom: 0;
+	/*float: right;
+	width: 150px;*/
+}
+
+#cover-page .pub-number {
+	background: #68737a;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+	text-align: center;
+	padding: 3px 0;
+}
+
+section {
+	display: block;
+	page-break-before: always;
+}
+
+section:first-child {
+	page-break-before: auto;
+}
+
+#indicia-page  {
+	page-break-before:always;
+	display: block;
+	height: 900px;
+	position: relative;
+}
+
+#indicia-page .pub-content-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+#indicia-page .primary-logo {
+	width: 250px;
+}
+
+.pdfcl {
+	clear: left;
+	display: inline-block;
+}
+
+/*
+* Pagebuilder
+* -----------------------------
+*/
+.column {
+	/*border: 1px solid #000; */
+}
+
+.row {
+	margin-bottom: 0 !important;
+}
+
+

@@ -1,0 +1,199 @@
+/* CSS Document */ 
+#cover-page {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#cover-page  {
+	display: block;
+	height: 900px;
+	position: relative;
+}
+
+#cover-page footer#cover-footer {
+	border-bottom: 1px solid #777;
+	position: absolute;
+	bottom: 15px;
+	left: 25px;
+	right: 25px;
+	width: auto;
+}
+
+#cover-page .primary-logo {
+	width: 300px;
+	height: auto;
+	/*border-left: 1px solid #777777;
+	border-right: 1px solid #777777;*/
+}
+
+#cover-page .primary-header {
+	color: #ffffff;
+	background: #53391e;
+	padding: 50px 0;
+}
+
+#cover-page .primary-title {
+	font-size: 30px;
+	line-height: 40px;
+	text-transform: uppercase;
+	margin: 0 25px;
+	font-weight: bold;
+}
+
+#cover-page .primary-subtitle {
+	font-size: 18px;
+	line-height: 24px;
+	margin: 0 25px;
+	font-weight: bold;
+}
+
+#cover-page .pub-authors {
+	font-size: 12px;
+	max-width: 50%;
+	line-height: 14px;
+	padding-bottom: 0rem;
+	padding-left: 10px;
+}
+
+/* Color Themes ---------------------------- */
+
+#title-page #sidebar,
+#cover-page.primary-header,
+#title-page.gardening #sidebar,
+#cover-page.gardening .primary-header {
+	background: #7b4519;
+}
+#title-page.4-h #sidebar,
+#cover-page.4-h .primary-header {
+	background: #008d3e;
+}
+#title-page.agricultural-production #sidebar,
+#cover-page.agricultural-production .primary-header {
+	background: #846223;
+}
+#title-page.communities-and-economic-development #sidebar,
+#cover-page.communities-and-economic-development .primary-header {
+	background: #cb7329;
+}
+#title-page.family-and-home #sidebar,
+#cover-page.family-and-home .primary-header {
+	background: #1a878e;
+}
+#title-page.food-and-nutrition #sidebar,
+#cover-page.food-and-nutrition .primary-header {
+	background: #c89100;
+}
+#title-page.natural-resources #sidebar,
+#cover-page.natural-resources .primary-header {
+	background: #988028;
+}
+#title-page.wsu-employees-and-volunteers #sidebar,
+#cover-page.wsu-employees-and-volunteers .primary-header {
+	background: #b41d30;
+}
+
+/*
+* Title Page
+* -------------------------------------------
+*/
+#title-page {
+	page-break-after: always;
+	display: block;
+	height: 950px;
+	position: relative;
+	margin: 0 25px;
+}
+
+#title-page #sidebar {
+	display: inline-block;
+	width: 35%;
+	height: 950px;
+	vertical-align: top;
+	position: relative;
+}
+
+#title-page #title-content {
+	display: inline-block;
+	width: 65%;
+	height: 950px;
+	vertical-align: top;
+}
+
+#title-page h1 {
+	font-size: 30px;
+	line-height: 40px;
+	text-transform: uppercase;
+	margin: 0 0 30px;
+	font-weight: bold;
+}
+
+#title-page h2 {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+#title-page .inner-wrapper {
+	margin: 0 25px;
+}
+
+#title-page #authors {
+	margin: 0 0 40px;
+}
+
+/*
+* TOC
+* -------------------------------------------
+*/
+
+#pub-toc {
+	color: #fff;
+	margin: 0 15px;
+	position: absolute;
+	bottom: 0;
+	padding: 0 0 35px;
+	font-size: 12px;
+	line-height: 13px;
+	font-weight: bold;
+}
+
+#pub-toc h5 {
+	color: #fff;
+	margin: 0; padding:0;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 4px;
+}
+
+#pub-toc a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px dotted #ccc;
+	font-family: 'Roboto Condensed', sans-serif;
+	padding-bottom: 2px;
+
+}
+
+#pub-toc table {
+	width: 100%;
+	margin-bottom: 25px;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+#pub-toc td {
+	padding: 3px 0 0;
+	position: relative;
+	vertical-align: bottom;
+}
+
+#pub-toc .toc-subhead td.toc-title a {
+	margin-left: 20px;
+}
+
+#pub-toc .toc-head td.toc-title a {
+}
+
+
+
+
