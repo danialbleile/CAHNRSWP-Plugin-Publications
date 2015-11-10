@@ -35,6 +35,8 @@ class CAHNRSWP_Plugin_Publications {
 		
 		add_action( 'wp_enqueue_scripts', array( $this , 'cwp_scripts' ) );
 		
+		add_action('pre_get_posts', array( $this , 'exclude_protected_action' ) );
+		
 		// Filters
 		
 		add_filter( 'template_include', array( $this , 'cwp_template_include' ), 99 );
@@ -42,6 +44,22 @@ class CAHNRSWP_Plugin_Publications {
 		add_filter( 'cwpb_post_types' , array( $this , 'cwpb_post_types' ) );
 		
 	} // end __construct
+	
+	public function exclude_protected_action( $query ){
+		
+		if( !is_single() && !is_page() && !is_admin() ) {
+			
+			add_filter( 'posts_where', array( $this , 'exclude_protected' ) );
+			
+		} // end if
+		
+	}
+	
+	public function exclude_protected( $where ){
+		global $wpdb;
+		return $where .= " AND {$wpdb->posts}.post_password = '' ";
+	}
+	
 	
 	public function cwpb_post_types ( $post_types ){
 		

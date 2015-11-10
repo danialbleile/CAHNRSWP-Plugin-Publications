@@ -58,6 +58,8 @@ class Publication_Long_PDF_CWPP {
 			
 		} // end foreach
 		
+		$html = str_replace( '<!--br-->', '<br />', $html );
+		
 		$pages = explode( '<!--pagebreak-->' , $html );
 		
 		$page_set = array();
@@ -77,23 +79,31 @@ class Publication_Long_PDF_CWPP {
 	
 	public function set_toc( $match ){
 		
-		if ( strpos( $match[0] , 'h2' ) !== false ){
+		if ( ! empty( $match[1] ) && $match[1] != '' ){ 
 			
-			$id = 'h2_' . $this->p . '_' . rand( 0 , 10000000 );
-					
-			$this->h++;
+			if ( strpos( $match[0] , 'h2' ) !== false ){
+				
+				$id = 'h2_' . $this->p . '_' . rand( 0 , 10000000 );
+						
+				$this->h++;
+				
+				$this->toc[$this->h]['h2'] = array( $match[1] , ( $this->p + 3 ) , $id );
+				
+			} else {
+				
+				$id = 'h3_' . $this->p . '_' . rand( 0 , 10000000 );
+				
+				$this->toc[$this->h]['h3'][] = array( $match[1] , ( $this->p + 3 ) , $id );
+				
+			} // end if
 			
-			$this->toc[$this->h]['h2'] = array( $match[1] , ( $this->p + 3 ) , $id );
-			
+			return '<a name="' . $id . '">' . $match[0] . '</a>';
+		
 		} else {
 			
-			$id = 'h3_' . $this->p . '_' . rand( 0 , 10000000 );
-			
-			$this->toc[$this->h]['h3'][] = array( $match[1] , ( $this->p + 3 ) , $id );
+			return $match[0];
 			
 		} // end if
-		
-		return '<a name="' . $id . '">' . $match[0] . '</a>';
 		
 	} // d build_toc
 	
@@ -182,7 +192,7 @@ class Publication_Long_PDF_CWPP {
 		
 		ob_start();
 		
-		include CWPPDIR . 'templates/short-publication/cover-page.php';
+		include CWPPDIR . 'templates/long-publication/cover-page.php';
 		
 		$html = ob_get_clean();
 		

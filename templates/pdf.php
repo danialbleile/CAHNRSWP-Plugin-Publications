@@ -33,8 +33,12 @@
 	
 	$dompdf->load_html( $html );
 	
+	set_time_limit( 300 );
+	
 	$dompdf->render();
 	
 	$dompdf->stream("publication.pdf", array("Attachment" => 0));
+	
+	set_time_limit( 30 );
 	
 ?>

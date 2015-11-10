@@ -97,7 +97,9 @@ class Publication_Short_PDF_CWPP {
 				
 			}// end if
 			
-			$html .= do_shortcode( $chapter->post_content );
+			$content = str_replace( '<!--br-->', '<br />', $chapter->post_content );
+			
+			$html .= do_shortcode( $content );
 			
 		} // end foreach
 		

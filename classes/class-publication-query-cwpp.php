@@ -149,7 +149,7 @@ class Publication_Query_CWPP {
 	
 	public function get_img_src( $post_id ){
 		
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'medium' );
+		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large' );
 		
 		return $image[0];
 		

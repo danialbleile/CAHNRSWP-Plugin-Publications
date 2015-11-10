@@ -36,8 +36,8 @@ $html = $pub_pdf->the_pdf();
 
 $dompdf = new DOMPDF();
 
-$dompdf->load_html( $html );
+//$dompdf->load_html( $html );
 
-$dompdf->render();
+//$dompdf->render();
 
-$dompdf->stream("publication.pdf", array("Attachment" => 0));
+//$dompdf->stream("publication.pdf", array("Attachment" => 0));
