@@ -113,9 +113,22 @@ class Publication_Short_PDF_CWPP {
 	
 	public function the_content_header(){
 		
+		//$header_title = $this->pub->get_title();
+		
+		//$header_title = str_replace( "'" , "" , $header_title );
+		
+		//var_dump( '<textarea>' . $header_title . '</textarea>' );
+		
+		$header_title = str_replace( '&#8217;' , '\'' , strtoupper( $this->pub->get_title() ) );
+		
+		//var_dump( htmlspecialchars( $header_title , ENT_QUOTES ) );
+		
 		$html = '<script type="text/php">
 			if ( isset($pdf) ) {
-				$text = "WSU EXTENSION  |  ' . str_replace( '&#8217;' , '\'' , strtoupper( $this->pub->get_title() ) ) . '"; 
+				
+				$header_title = 
+				
+				$text = "WSU EXTENSION  |  ' . $header_title . '"; 
 				$font = Font_Metrics::get_font("helvetica", "bold");
 				$size = 8;
 	
